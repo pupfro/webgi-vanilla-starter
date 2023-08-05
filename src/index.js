@@ -20,13 +20,13 @@ async function setupViewer(){
         useRgbm: false,
     });
 
-    const data={
-        position: {x: 0, y: 0, z: 0},
-        rotation: {x: 0, y: 0, z: 0},
-    }
+    // const data={
+    //     position: {x: 0, y: 0, z: 0},
+    //     rotation: {x: 0, y: 0, z: 0},
+    // }
 
-    const pane = new Pane();
-    viewer.renderer.displayCanvasScaling = Math.min(window.devicePixelRatio, 1)
+    // const pane = new Pane();
+    // viewer.renderer.displayCanvasScaling = Math.min(window.devicePixelRatio, 1)
 
     const manager = await viewer.addPlugin(AssetManagerPlugin)
 
@@ -71,27 +71,27 @@ async function setupViewer(){
         })
     }
 
-    pane.addInput(data, "position", {
-        x: { step: 0.01 },
-        y: { step: 0.01 },
-        z: { step: 0.01 },
-    });
-    pane.addInput(data, "rotation", {
-        x: { min: -6.28, max: 6.28, step: 0.001 },
-        y: { min: -6.28, max: 6.28, step: 0.001 },
-        z: { min: -6.28, max: 6.28, step: 0.001 },
-    });
+    // pane.addInput(data, "position", {
+    //     x: { step: 0.01 },
+    //     y: { step: 0.01 },
+    //     z: { step: 0.01 },
+    // });
+    // pane.addInput(data, "rotation", {
+    //     x: { min: -6.28, max: 6.28, step: 0.001 },
+    //     y: { min: -6.28, max: 6.28, step: 0.001 },
+    //     z: { min: -6.28, max: 6.28, step: 0.001 },
+    // });
 
-    pane.on("change", (e) => {
-        if (e.presetKey === "rotation") {
-            const {x, y, z } = e.value;
-            modelRotation.set(x, y, z);
-        } else {
-            const {x, y, z } = e.value;
-            modelPosition.set(x, y, z);
-        }
-        onUpdate();
-    })
+    // pane.on("change", (e) => {
+    //     if (e.presetKey === "rotation") {
+    //         const {x, y, z } = e.value;
+    //         modelRotation.set(x, y, z);
+    //     } else {
+    //         const {x, y, z } = e.value;
+    //         modelPosition.set(x, y, z);
+    //     }
+    //     onUpdate();
+    // })
 
     function setupScrollAnimation() {
         document.body.removeChild(loaderElement);
@@ -250,9 +250,6 @@ async function setupViewer(){
               scrub: true,
             },
           })
-          
-        console.log("setupScrollAnimation");
-
     }
 
     function onUpdate(){
